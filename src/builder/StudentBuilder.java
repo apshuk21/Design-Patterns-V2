@@ -22,19 +22,40 @@ public class StudentBuilder {
         return course;
     }
 
-    public void setName(String name) {
+    public StudentBuilder name(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setAge(int age) {
+    public StudentBuilder age(int age) {
         this.age = age;
+        return this;
     }
 
-    public void setGradYear(int gradYear) {
+    public StudentBuilder gradYear(int gradYear) {
         this.gradYear = gradYear;
+        return this;
     }
 
-    public void setCourse(String course) {
+    public StudentBuilder course(String course) {
         this.course = course;
+        return this;
+    }
+
+    public Student build() {
+        if (this.getAge() < 18) {
+            throw new IllegalArgumentException("Age must be at least 18");
+        }
+
+        if (this.getGradYear() > 2024) {
+            throw new IllegalArgumentException("Grad year must be smaller than 2024");
+        }
+
+        if (this.getCourse() == null) {
+            this.course = "Academy";
+        } else {
+            this.course = this.getCourse();
+        }
+        return new Student(this);
     }
 }

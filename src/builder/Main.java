@@ -2,12 +2,10 @@ package builder;
 
 public class Main {
     public static void main(String[] args) {
-        StudentBuilder sb = new StudentBuilder();
-        sb.setName("John");
-        sb.setAge(32);
-        sb.setGradYear(2010);
-
-        Student st = new Student(sb);
+        /** Version 1, In which Student class will give it\'s builder instance
+         * Also. StudentBuilder will create and return the Student
+         */
+        Student st = Student.getBuilder().name("John").age(32).gradYear(2010).build();
         st.setBatch("Oct 2023");
         st.setPsp(89.98);
 

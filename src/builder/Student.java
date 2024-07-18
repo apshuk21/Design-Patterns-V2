@@ -9,20 +9,6 @@ public class Student {
     private double psp;
 
     public Student(StudentBuilder builder) {
-        if (builder.getAge() < 18) {
-            throw new IllegalArgumentException("Age must be at least 18");
-        }
-
-        if (builder.getGradYear() > 2024) {
-            throw new IllegalArgumentException("Grad year must be smaller than 2024");
-        }
-
-        if (builder.getCourse() == null) {
-            this.course = "Academy";
-        } else {
-            this.course = builder.getCourse();
-        }
-
         this.name = builder.getName();
         this.age = builder.getAge();
         this.gradYear = builder.getGradYear();
@@ -54,5 +40,9 @@ public class Student {
 
     public void setPsp(double psp) {
         this.psp = psp;
+    }
+
+    public static StudentBuilder getBuilder() {
+        return new StudentBuilder();
     }
 }
